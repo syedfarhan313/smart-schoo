@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 215 50% 10%;
+    --foreground: 210 40% 96%;
+
+    --card: 215 45% 14%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 215 45% 14%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 215 60% 16%;
+    --primary-foreground: 210 40% 96%;
+
+    --secondary: 215 45% 24%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 215 30% 18%;
+    --muted-foreground: 210 20% 70%;
+
+    --accent: 210 80% 55%;
+    --accent-foreground: 215 50% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 40 20% 98%;
+
+    --border: 215 30% 25%;
+    --input: 215 30% 25%;
+    --ring: 210 80% 55%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 215 45% 12%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 215 60% 16%;
+    --sidebar-primary-foreground: 210 40% 96%;
+    --sidebar-accent: 215 35% 20%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 215 30% 25%;
+    --sidebar-ring: 210 80% 55%;
+  }
+
+  .dark {
+    --background: 215 55% 8%;
+    --foreground: 210 40% 96%;
+    --card: 215 45% 12%;
+    --card-foreground: 210 40% 96%;
+    --popover: 215 45% 12%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 215 60% 16%;
+    --primary-foreground: 210 40% 96%;
+    --secondary: 215 45% 24%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 215 30% 18%;
+    --muted-foreground: 210 20% 70%;
+    --accent: 210 80% 55%;
+    --accent-foreground: 215 50% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 96%;
+    --border: 215 30% 25%;
+    --input: 215 30% 25%;
+    --ring: 210 80% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    @apply overflow-x-auto whitespace-pre;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-primary/70 backdrop-blur-md border border-accent/20 shadow-xl;
+  }
+
+  .glass-dark {
+    @apply bg-black/50 backdrop-blur-md border border-white/10 shadow-xl;
+  }
+
+  .gold-border {
+    @apply border border-accent/30;
+  }
+
+  .gold-gradient {
+    @apply bg-gradient-to-br from-[#0B2B4F] via-[#0E3A6A] to-[#155BA0];
+  }
+
+  .islamic-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l15 15-15 15-15-15L30 0zm0 60l15-15-15-15-15 15 15 15zM0 30l15-15 15 15-15 15L0 30zm60 0l-15-15-15 15 15 15 15-15z' fill='%23155BA0' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 10, 20, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 60;
+}
+
+.modal-overlay.is-open {
+  display: flex;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 420px;
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  padding: 24px;
+  text-align: center;
+}
+
+.modal-message {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.modal-button {
+  width: 100%;
+  padding: 12px 16px;
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.modal-button:hover {
+  filter: brightness(1.05);
+}
